@@ -38,7 +38,7 @@ def parse_mq(args):
     for line in mailq_stdout.splitlines():
         if not line or line[:10] == '-Queue ID-' or line[:2] == '--':
             continue
-        if line[0] in '0123456789ABCDEF':
+        if line[0] in '0123456789ABCDEF': # XXX: unsure whether long queue IDs also start like that
             s = line.split()
             curmsg = s[0]
             if curmsg[-1] == '*':
