@@ -60,6 +60,8 @@ def parse_mq(args):
             msgs[curmsg]['recipient'] = line.strip()
         elif line.lstrip(' ')[0] == '(':
             msgs[curmsg]['reason'] = line.strip()[1:-1].replace('\n', ' ')
+        elif line == 'Mail queue is empty':
+            pass
         else:
             print >> sys.stderr, 'Error: Unknown line in mailq output: %s' % line
             sys.exit(1)
