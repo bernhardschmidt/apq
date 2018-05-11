@@ -44,6 +44,9 @@ def parse_mq(args):
             if curmsg[-1] == '*':
                 status = 'active'
                 curmsg = curmsg[:-1]
+            elif curmsg[-1] == '!':
+                status = 'held'
+                curmsg = curmsg[:-1]
             else:
                 status = 'deferred'
             msgs[curmsg] = {
